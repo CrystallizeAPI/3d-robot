@@ -1,7 +1,7 @@
 export function HackRobot() {
   return (
     <model-viewer
-      src="../../glb/robot-nodes/Default.glb"
+      src="../../glb/robot-nodes/variants.glb"
       camera-orbit="65deg 0 0"
       camera-controls
       shadow-intensity="3"
