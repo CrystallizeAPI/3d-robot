@@ -9,7 +9,7 @@ export function Variants() {
 
     modelViewer?.addEventListener("load", () => {
       console.log(modelViewer.availableVariants);
-      modelViewer.variantName = "copper";
+      modelViewer.variantName = "gold";
 
       console.log(modelViewer.variantName);
     });
