@@ -1,28 +1,42 @@
-import { useEffect, useRef } from "react";
-import type { ModelViewerElement } from "../types";
+// import { useEffect, useState } from "react";
+// import { useModelViewer } from "../hooks";
+// import { ActionBar, Button } from "../components";
 
 export function Variants() {
-  const modelViewerRef = useRef<ModelViewerElement>(null);
+  // const modelViewerRef = useModelViewer();
+  // const [variants, setVariants] = useState<string[]>([]);
 
-  useEffect(() => {
-    const modelViewer = modelViewerRef.current;
+  // useEffect(() => {
+  //   const modelViewer = modelViewerRef.current;
 
-    modelViewer?.addEventListener("load", () => {
-      console.log(modelViewer.availableVariants);
-      modelViewer.variantName = "gold";
-
-      console.log(modelViewer.variantName);
-    });
-  }, []);
+  //   modelViewer?.addEventListener("load", () => {
+  //     setVariants(modelViewer.availableVariants);
+  //   });
+  // }, []);
 
   return (
-    <model-viewer
-      ref={modelViewerRef}
-      src="../glb/variants.glb"
-      camera-orbit="65deg 0 0"
-      camera-controls
-      shadow-intensity="3"
-      shadow-softness="1.5"
-    />
+    <>
+      <model-viewer
+        //ref={modelViewerRef}
+        src="../glb/variants.glb"
+        camera-orbit="65deg 0 0"
+        camera-controls
+        shadow-intensity="3"
+        shadow-softness="1.5"
+      />
+      {/* <ActionBar>
+        {variants.map((variant) => (
+          <Button
+            onClick={() => {
+              if (modelViewerRef.current) {
+                modelViewerRef.current.variantName = variant;
+              }
+            }}
+          >
+            {variant}
+          </Button>
+        ))}
+      </ActionBar> */}
+    </>
   );
 }
