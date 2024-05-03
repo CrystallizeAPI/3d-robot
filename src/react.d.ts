@@ -16,6 +16,7 @@ export declare global {
         reveal?: "auto" | "manual";
         "skybox-image"?: string | null;
         "skybox-height"?: string;
+        ar?: boolean;
       };
     }
   }

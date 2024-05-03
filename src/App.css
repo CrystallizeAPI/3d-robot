@@ -68,3 +68,19 @@ model-viewer {
     white-space: nowrap;
     border-width: 0;
 }
+
+.ar {
+    display: flex;
+    width: 100%;
+
+    div {
+        flex: 1 1 33.33%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+       img {
+        object-contain;
+       }
+    }
+}
