@@ -13,6 +13,8 @@ export function Ar() {
         shadow-softness="1.5"
         camera-controls
         ref={modelViewerRef}
+        ar
+        touch-action="pan-y"
       />
       <Form
         onSubmit={(value) => {
