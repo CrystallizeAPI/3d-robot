@@ -5,6 +5,7 @@ import { HackRobot } from "./app/routes/hack-robot";
 import { Variants } from "./app/routes/variants";
 import { Profession } from "./app/routes/profession";
 import { Environment } from "./app/routes/environment";
+import { Ar } from "./app/routes/ar";
 
 import "./App.css";
 
@@ -13,6 +14,7 @@ export const paths = [
   { path: "variants", element: <Variants /> },
   { path: "profession", element: <Profession /> },
   { path: "environment", element: <Environment /> },
+  { path: "ar", element: <Ar /> },
 ];
 
 const router = createBrowserRouter([
