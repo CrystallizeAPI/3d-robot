@@ -14,6 +14,8 @@ export declare global {
         "shadow-intensity"?: string;
         "shadow-softness"?: string;
         exposure?: string;
+        loading?: "auto" | "lazy" | "eager";
+        reveal?: "auto" | "manual";
       };
     }
   }

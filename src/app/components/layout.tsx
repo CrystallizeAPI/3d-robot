@@ -8,13 +8,16 @@ export const Layout = () => {
   const navigateTo = (type: "next" | "prev") => {
     const index = paths.findIndex((path) => `/${path.path}` === pathname);
     let nextPathIndex: number;
+
     if (type === "next") {
       nextPathIndex = index + 1 > paths.length ? paths.length : index + 1;
     } else {
-      nextPathIndex = index - 1 > 0 ? 0 : index - 1;
+      nextPathIndex = index - 1 < 0 ? 0 : index - 1;
     }
 
-    navigate(paths[nextPathIndex].path);
+    const nextPath = paths[nextPathIndex]?.path;
+
+    !!nextPath && navigate(nextPath);
   };
 
   return (
