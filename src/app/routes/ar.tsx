@@ -12,6 +12,7 @@ export function Ar() {
       camera-controls
       ref={modelViewerRef}
       ar
+      xr-environment
       style={{ maxWidth: "80vw", maxHeight: "60vh" }}
     />
   );
