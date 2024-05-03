@@ -76,11 +76,26 @@ model-viewer {
     div {
         flex: 1 1 33.33%;
         display: flex;
+        flex-direction: column;
         justify-content: center;
         align-items: center;
 
+        & + div {
+            border-left: 1px solid #e7e6e9;
+        }
+
        img {
         object-contain;
+        &:first-of-type {
+            flex: 1 1 auto;
+            max-height: 500px;
+            height: 100%;
+        }
        }
+    }
+
+    .qr {
+        flex: 0 0 300px;
+        max-width: 300px;
     }
 }
