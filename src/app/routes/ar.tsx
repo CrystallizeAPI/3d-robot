@@ -1,20 +1,7 @@
-import { useEffect } from "react";
 import { useModelViewer } from "../hooks";
 
 export function Ar() {
   const modelViewerRef = useModelViewer();
-
-  useEffect(() => {
-    modelViewerRef.current?.addEventListener("ar-status", (event) => {
-      if (event.detail.status === "failed") {
-        const error = document.querySelector("#error");
-        error.classList.remove("hide");
-        error.addEventListener("transitionend", (event) => {
-          error.classList.add("hide");
-        });
-      }
-    });
-  }, []);
 
   return (
     <model-viewer
@@ -29,12 +16,8 @@ export function Ar() {
       touch-action="pan-y"
       xr-environment
       ios-src="../glb/hack-robot.usdz"
-      ar-modes="scene-viewer quick-look"
-    >
-      <div id="error" className="hide">
-        AR is not supported on this device
-      </div>
-    </model-viewer>
+      style={{ width: "calc(100% - 100px)", height: "calc(100vh - 100px)" }}
+    />
   );
 }
 
