@@ -12,11 +12,7 @@ export function Ar() {
       camera-controls
       ref={modelViewerRef}
       ar
-      ar-scale="fixed"
-      touch-action="pan-y"
-      xr-environment
-      ios-src="../glb/hack-robot.usdz"
-      style={{ maxWidth: "80vw", maxHeight: "80vh" }}
+      style={{ maxWidth: "80vw", maxHeight: "60vh" }}
     />
   );
 }
