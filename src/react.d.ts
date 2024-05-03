@@ -4,9 +4,7 @@ export declare global {
   namespace JSX {
     interface IntrinsicElements {
       "model-viewer": React.DetailedHTMLProps<
-        React.AllHTMLAttributes<
-          Partial<globalThis.HTMLElementTagNameMap["model-viewer"]>
-        >,
+        React.AllHTMLAttributes<Partial<globalThis.HTMLElementTagNameMap["model-viewer"]>>,
         Partial<globalThis.HTMLElementTagNameMap["model-viewer"]>
       > & {
         "camera-orbit"?: string;
@@ -16,6 +14,8 @@ export declare global {
         exposure?: string;
         loading?: "auto" | "lazy" | "eager";
         reveal?: "auto" | "manual";
+        "skybox-image"?: string | null;
+        "skybox-height"?: string;
       };
     }
   }
