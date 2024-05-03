@@ -1,4 +1,3 @@
-import { Form, Input, Button } from "../components";
 import { useModelViewer } from "../hooks";
 
 export function Ar() {
@@ -16,6 +15,7 @@ export function Ar() {
       ar-scale="fixed"
       touch-action="pan-y"
       xr-environment
+      ios-src="../glb/hack-robot.usdz"
     />
   );
 }
