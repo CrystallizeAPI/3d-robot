@@ -2,11 +2,12 @@ type ButtonProps = {
   children: React.ReactNode;
   onClick?: () => void;
   isSelected?: boolean;
+  disabled?: boolean;
 };
 
-export const Button = ({ children, onClick, isSelected }: ButtonProps) => {
+export const Button = ({ children, onClick, isSelected, disabled }: ButtonProps) => {
   return (
-    <button type="submit" onClick={onClick} className={isSelected ? "selected" : undefined}>
+    <button type="submit" onClick={onClick} disabled={disabled} className={isSelected ? "selected" : undefined}>
       {children}
     </button>
   );

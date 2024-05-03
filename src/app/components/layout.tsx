@@ -6,7 +6,7 @@ export const Layout = () => {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const navigateTo = (type: "next" | "prev") => {
-    const index = paths.findIndex((path) => `/${path.path}` === pathname);
+    const index = pathname === "/" ? 0 : paths.findIndex((path) => `/${path.path}` === pathname);
     let nextPathIndex: number;
 
     if (type === "next") {

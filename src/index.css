@@ -38,7 +38,6 @@ h1 {
 }
 
 button {
-    cursor: pointer;
     white-space: nowrap;
     border-radius: 4px;
     border-style: none;
@@ -51,6 +50,10 @@ button {
     font-weight: 700;
     color: #4c4f5a;
     outline: 1px solid transperant;
+
+    &:enabled {
+        cursor: pointer;
+    }
 }
 
 button:hover {

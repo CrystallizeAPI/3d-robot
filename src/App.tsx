@@ -12,8 +12,10 @@ import { CopperRobot } from "./app/routes/models/copper-robot";
 import { CyanViking } from "./app/routes/models/cyan-viking";
 
 import "./App.css";
+import { Index } from "./app/routes";
 
 export const paths = [
+  { index: true, element: <Index />, path: "/" },
   { path: "hack-robot", element: <HackRobot /> },
   { path: "variants", element: <Variants /> },
   { path: "profession", element: <Profession /> },
