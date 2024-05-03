@@ -16,7 +16,7 @@ export function Ar() {
       touch-action="pan-y"
       xr-environment
       ios-src="../glb/hack-robot.usdz"
-      style={{ width: "calc(100% - 100px)", height: "calc(100vh - 100px)" }}
+      style={{ maxWidth: "80vw", maxHeight: "80vh" }}
     />
   );
 }
