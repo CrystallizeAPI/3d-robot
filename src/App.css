@@ -116,6 +116,9 @@ main {
     padding: 50px;
     max-width: 80vw;
     margin: 0 auto;
+}
+
+.product {
     display: flex;
     gap: 20px;
 }
@@ -143,6 +146,7 @@ header {
     position: relative;
 }
 
+.product-info,
 .product-details {
     display: flex;
     flex-direction: column;
@@ -184,10 +188,30 @@ header {
         position: absolute;
         bottom: 0;
         right: 0;
+
+        button + button {
+            margin-left: 20px;
+        }
+    }
+}
+
+.product-info {
+    flex-direction: row;
+    margin-top: 150px;
+    gap: 20px;
+
+    & > * {
+        flex: 1 1 50%;
+        width: 50%;
+    }
+
+    .desc {
+        width: 460px;
     }
 }
 
 .slide {
+    position: relative;
     width: 100%;
     height: 500px;
     display: flex;
@@ -199,22 +223,62 @@ header {
         height: 100%;
         object-fit: contain;
     }
+
+    .loader {
+        width: 40px;
+        height: 40px;
+    }
+
+    .image-cover {
+        object-fit: cover;
+    }
 }
 
+.green,
 .yellow {
-    background: #fdda0d;
-
     &.circle {
         width: 200px;
         height: 200px;
         border-radius: 50%;
+
+        &.on-image {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            left: 26%;
+            top: 10%;
+        }
     }
 
     &.side {
-        width: 40px;
+        position: relative;
+        width: 24px;
         height: 200px;
         border-radius: 10px;
+
+        .side-small {
+            position: absolute;
+            left: 100%;
+            width: 10px;
+            height: 100px;
+            background: #fdda0d;
+            top: 50%;
+            transform: translateY(-50%);
+            border-top-right-radius: 5px;
+            border-bottom-right-radius: 5px;
+        }
     }
+
+    &.frame {
+        border-radius: 20px;
+    }
+}
+
+.yellow {
+    background: #fdda0d;
+}
+.green {
+    background: #e3e543;
 }
 
 .custom-button {
@@ -222,15 +286,18 @@ header {
     text-alight: center;
     position: relative;
 
-    svg {
-        position: absolute;
+    .loader {
         left: -10px;
         top: 2px;
-        animation-name: spin;
-        animation-duration: 800ms;
-        animation-iteration-count: infinite;
-        animation-timing-function: linear;
     }
+}
+
+.loader {
+    position: absolute;
+    animation-name: spin;
+    animation-duration: 800ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
 }
 
 @keyframes spin {
