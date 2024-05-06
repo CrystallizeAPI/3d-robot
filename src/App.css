@@ -21,6 +21,12 @@ model-viewer {
     }
 }
 
+.ar {
+    model-viewer {
+        max-height: 70vh;
+    }
+}
+
 .action-bar {
     position: absolute;
     top: 20px;
