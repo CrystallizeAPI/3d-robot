@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useModelViewer } from "../hooks";
-import { ActionBar, RadioButton } from "../components";
+import { ActionBar, RadioButton, VariantsBar } from "../components";
 
 const professions = ["Universal", "Chef", "Viking"];
 
@@ -39,23 +39,7 @@ export function Profession() {
         reveal="manual"
         poster="./glb/poster.webp"
       />
-
-      <ActionBar>
-        {variants.map((variant, index) => (
-          <RadioButton
-            name="variant"
-            value={variant}
-            defaultChecked={index === 0}
-            onClick={() => {
-              if (modelViewerRef.current) {
-                modelViewerRef.current.variantName = variant;
-              }
-            }}
-          >
-            {variant}
-          </RadioButton>
-        ))}
-      </ActionBar>
+      <VariantsBar variants={variants} onSelect={(variant) => (modelViewerRef.current.variantName = variant)} />
       <ActionBar>
         {professions.map((profession, index) => (
           <RadioButton
