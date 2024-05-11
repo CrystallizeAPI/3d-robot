@@ -5,3 +5,4 @@ export { Layout } from "./layout";
 export { ActionBar } from "./action-bar";
 export { RadioButton } from "./radio-button";
 export { VariantsBar } from "./variants-bar";
+export { ExpertiseBar } from "./expertise-bar";

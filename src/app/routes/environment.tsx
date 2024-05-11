@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import { useModelViewer } from "../hooks";
-import { ActionBar, RadioButton } from "../components";
+import { ExpertiseBar, VariantsBar } from "../components";
 
-const professions = ["Universal", "Chef", "Viking"];
+const expertise = ["Universal", "Chef", "Viking"];
 
 export function Environment() {
   const modelViewerRef = useModelViewer();
   const [variants, setVariants] = useState<string[]>([]);
   const getSkyboxUrl = (fileName: string) => `./glb/${fileName}.webp`;
-  const [skybox, setSkybox] = useState<string | null>(getSkyboxUrl(professions[0]));
+  const [skybox, setSkybox] = useState<string | null>(getSkyboxUrl(expertise[0]));
 
   useEffect(() => {
     const modelViewer = modelViewerRef.current;
@@ -17,7 +17,7 @@ export function Environment() {
       setVariants(modelViewer.availableVariants);
 
       modelViewer.model?.materials.forEach(({ name }) => {
-        if (professions.some((profession) => name.startsWith(profession))) {
+        if (expertise.some((skill) => name.startsWith(skill))) {
           const material = modelViewer.model?.getMaterialByName(name);
           material?.setAlphaMode("MASK");
           material?.pbrMetallicRoughness.setBaseColorFactor([1, 1, 1, 0]);
@@ -47,53 +47,25 @@ export function Environment() {
         max-field-of-view="60deg"
       />
 
-      <ActionBar>
-        {variants.map((variant, index) => (
-          <RadioButton
-            name="variant"
-            value={variant}
-            defaultChecked={index === 0}
-            onClick={() => {
-              if (modelViewerRef.current) {
-                modelViewerRef.current.variantName = variant;
-              }
-            }}
-          >
-            {variant}
-          </RadioButton>
-        ))}
-      </ActionBar>
+      <VariantsBar variants={variants} onSelect={(variant) => (modelViewerRef.current.variantName = variant)} />
 
-      <ActionBar>
-        {professions.map((profession, index) => (
-          <RadioButton
-            name="profession"
-            value={profession}
-            defaultChecked={index === 0}
-            onClick={() => {
-              const visible = profession;
-              const visibleIndex = professions.findIndex((profession) => profession === visible);
-              const hidden = [...professions];
-              hidden.splice(visibleIndex, 1);
+      <ExpertiseBar
+        expertise={expertise}
+        onSelect={(visibleMaterial) => {
+          modelViewerRef.current?.model?.materials.forEach(({ name }) => {
+            const material = modelViewerRef.current?.model?.getMaterialByName(name);
 
-              modelViewerRef.current?.model?.materials.forEach(({ name }) => {
-                const material = modelViewerRef.current?.model?.getMaterialByName(name);
+            if (name.startsWith(visibleMaterial)) {
+              material?.pbrMetallicRoughness.setBaseColorFactor([1, 1, 1, 1]);
+            } else if (expertise.some((skill) => name.startsWith(skill))) {
+              material?.pbrMetallicRoughness.setBaseColorFactor([1, 1, 1, 0]);
+            }
 
-                if (name.startsWith(profession)) {
-                  material?.pbrMetallicRoughness.setBaseColorFactor([1, 1, 1, 1]);
-                } else if (hidden.some((profession) => name.startsWith(profession))) {
-                  material?.pbrMetallicRoughness.setBaseColorFactor([1, 1, 1, 0]);
-                }
-
-                // Set skybox
-                setSkybox(getSkyboxUrl(visible));
-              });
-            }}
-          >
-            {profession}
-          </RadioButton>
-        ))}
-      </ActionBar>
+            // Set skybox
+            setSkybox(getSkyboxUrl(visibleMaterial));
+          });
+        }}
+      />
     </>
   );
 }

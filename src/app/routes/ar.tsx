@@ -8,13 +8,13 @@ export function Ar() {
       </div>
       <div>
         <h2>Jack of all trades</h2>
-        <img src="./glb/ar/copper-robot.webp" alt="QR copper robot" />
-        <img src="./glb/ar/qr-copper-robot.png" alt="QR gold chef" className="qr" />
+        <img src="./glb/ar/copper-robot.webp" alt="Copper robot" />
+        <img src="./glb/ar/qr-copper-robot.png" alt="QR copper robot" className="qr" />
       </div>
       <div>
         <h2>Cave guardian</h2>
-        <img src="./glb/ar/cyan-viking.webp" alt="QR cyan viking" />
-        <img src="./glb/ar/qr-cyan-viking.png" alt="QR gold chef" className="qr" />
+        <img src="./glb/ar/cyan-viking.webp" alt="Cyan viking" />
+        <img src="./glb/ar/qr-cyan-viking.png" alt="QR cyan viking" className="qr" />
       </div>
     </div>
   );

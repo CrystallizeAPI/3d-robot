@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useModelViewer } from "../hooks";
-import { ActionBar, RadioButton, VariantsBar } from "../components";
+import { VariantsBar, ExpertiseBar } from "../components";
 
-const professions = ["Universal", "Chef", "Viking"];
+const expertise = ["Universal", "Chef", "Viking"];
 
 export function Profession() {
   const modelViewerRef = useModelViewer();
@@ -15,7 +15,7 @@ export function Profession() {
       setVariants(modelViewer.availableVariants);
 
       modelViewer.model?.materials.forEach(({ name }) => {
-        if (professions.some((profession) => name.startsWith(profession))) {
+        if (expertise.some((skill) => name.startsWith(skill))) {
           const material = modelViewer.model?.getMaterialByName(name);
           material?.setAlphaMode("MASK");
           material?.pbrMetallicRoughness.setBaseColorFactor([1, 1, 1, 0]);
@@ -40,33 +40,21 @@ export function Profession() {
         poster="./glb/poster.webp"
       />
       <VariantsBar variants={variants} onSelect={(variant) => (modelViewerRef.current.variantName = variant)} />
-      <ActionBar>
-        {professions.map((profession, index) => (
-          <RadioButton
-            name="profession"
-            value={profession}
-            defaultChecked={index === 0}
-            onClick={() => {
-              const visible = profession;
-              const visibleIndex = professions.findIndex((profession) => profession === visible);
-              const hidden = [...professions];
-              hidden.splice(visibleIndex, 1);
 
-              modelViewerRef.current?.model?.materials.forEach(({ name }) => {
-                const material = modelViewerRef.current?.model?.getMaterialByName(name);
+      <ExpertiseBar
+        expertise={expertise}
+        onSelect={(visibleMaterial) => {
+          modelViewerRef.current?.model?.materials.forEach(({ name }) => {
+            const material = modelViewerRef.current?.model?.getMaterialByName(name);
 
-                if (name.startsWith(profession)) {
-                  material?.pbrMetallicRoughness.setBaseColorFactor([1, 1, 1, 1]);
-                } else if (hidden.some((profession) => name.startsWith(profession))) {
-                  material?.pbrMetallicRoughness.setBaseColorFactor([1, 1, 1, 0]);
-                }
-              });
-            }}
-          >
-            {profession}
-          </RadioButton>
-        ))}
-      </ActionBar>
+            if (name.startsWith(visibleMaterial)) {
+              material?.pbrMetallicRoughness.setBaseColorFactor([1, 1, 1, 1]);
+            } else if (expertise.some((skill) => name.startsWith(skill))) {
+              material?.pbrMetallicRoughness.setBaseColorFactor([1, 1, 1, 0]);
+            }
+          });
+        }}
+      />
     </>
   );
 }
