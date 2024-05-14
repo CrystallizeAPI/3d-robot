@@ -1,14 +1,12 @@
 import { useEffect, useState } from "react";
 import { useModelViewer } from "../hooks";
-import { ExpertiseBar, VariantsBar } from "../components";
+import { SkillsBar, VariantsBar } from "../components";
 
-const expertise = ["Universal", "Chef", "Viking"];
+const skills = ["Universal", "Chef", "Viking"];
 
 export function Environment() {
   const modelViewerRef = useModelViewer();
   const [variants, setVariants] = useState<string[]>([]);
-  const getSkyboxUrl = (fileName: string) => `./glb/${fileName}.webp`;
-  const [skybox, setSkybox] = useState<string | null>(getSkyboxUrl(expertise[0]));
 
   useEffect(() => {
     const modelViewer = modelViewerRef.current;
@@ -17,7 +15,7 @@ export function Environment() {
       setVariants(modelViewer.availableVariants);
 
       modelViewer.model?.materials.forEach(({ name }) => {
-        if (expertise.some((skill) => name.startsWith(skill))) {
+        if (skills.some((skill) => name.startsWith(skill))) {
           const material = modelViewer.model?.getMaterialByName(name);
           material?.setAlphaMode("MASK");
           material?.pbrMetallicRoughness.setBaseColorFactor([1, 1, 1, 0]);
@@ -26,7 +24,7 @@ export function Environment() {
 
       setTimeout(() => modelViewer.dismissPoster(), 0);
     });
-  }, [modelViewerRef.current]);
+  }, []);
 
   return (
     <>
@@ -39,33 +37,37 @@ export function Environment() {
         loading="eager"
         reveal="manual"
         poster="./glb/ebv-poster.webp"
-        skybox-image={skybox}
-        skybox-height="1.2m"
-        camera-orbit="90deg 63deg 0"
-        max-camera-orbit="auto 85deg auto"
-        min-field-of-view="60deg"
-        max-field-of-view="60deg"
       />
 
       <VariantsBar variants={variants} onSelect={(variant) => (modelViewerRef.current.variantName = variant)} />
 
-      <ExpertiseBar
-        expertise={expertise}
+      <SkillsBar
+        skills={skills}
         onSelect={(visibleMaterial) => {
           modelViewerRef.current?.model?.materials.forEach(({ name }) => {
             const material = modelViewerRef.current?.model?.getMaterialByName(name);
 
             if (name.startsWith(visibleMaterial)) {
               material?.pbrMetallicRoughness.setBaseColorFactor([1, 1, 1, 1]);
-            } else if (expertise.some((skill) => name.startsWith(skill))) {
+            } else if (skills.some((skill) => name.startsWith(skill))) {
               material?.pbrMetallicRoughness.setBaseColorFactor([1, 1, 1, 0]);
             }
-
-            // Set skybox
-            setSkybox(getSkyboxUrl(visibleMaterial));
           });
         }}
       />
     </>
   );
 }
+
+//   const getSkyboxUrl = (fileName: string) => `./glb/${fileName}.webp`;
+// const [skybox, setSkybox] = useState<string | null>(getSkyboxUrl(skills[0]));
+
+// skybox-image={skybox}
+//         skybox-height="1.2m"
+//         camera-orbit="90deg 63deg 0"
+//         max-camera-orbit="auto 85deg auto"
+//         min-field-of-view="60deg"
+//         max-field-of-view="60deg"
+
+// Set skybox
+// setSkybox(getSkyboxUrl(visibleMaterial));

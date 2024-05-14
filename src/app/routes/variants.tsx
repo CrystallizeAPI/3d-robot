@@ -2,7 +2,7 @@ export function Variants() {
   return (
     <>
       <model-viewer
-        src="../glb/variants.glb"
+        src="./glb/variants.glb"
         camera-orbit="65deg 0 0"
         camera-controls
         shadow-intensity="3"
@@ -32,7 +32,7 @@ export function Variants() {
 //     <>
 //       <model-viewer
 //         ref={modelViewerRef}
-//         src="../glb/variants.glb"
+//         src="./glb/variants.glb"
 //         camera-orbit="65deg 0 0"
 //         camera-controls
 //         shadow-intensity="3"
