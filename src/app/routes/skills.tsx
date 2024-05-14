@@ -2,8 +2,6 @@ import { useEffect, useState } from "react";
 import { useModelViewer } from "../hooks";
 import { VariantsBar } from "../components";
 
-// const skills = ["Universal", "Chef", "Viking"];
-
 export function Skills() {
   const modelViewerRef = useModelViewer();
   const [variants, setVariants] = useState<string[]>([]);
@@ -30,6 +28,8 @@ export function Skills() {
     </>
   );
 }
+
+// const skills = ["Universal", "Chef", "Viking"];
 
 // loading="eager"
 // reveal="manual"
