@@ -2,8 +2,6 @@ export function HackRobot() {
   return <></>;
 }
 
-// export function HackRobot() {
-//   return (
 //     <model-viewer
 //       src="./glb/hack-robot.glb"
 //       camera-orbit="65deg 0 0"
@@ -11,9 +9,5 @@ export function HackRobot() {
 //       shadow-softness="1.5"
 //       camera-controls
 //     />
-//   );
-// }
-
-// $0.model.materials[0].pbrMetallicRoughness.setBaseColorFactor([Math.random(), Math.random(), Math.random()])
 
 // #FFC0CB  #F4C0FF

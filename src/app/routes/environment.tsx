@@ -59,7 +59,7 @@ export function Environment() {
   );
 }
 
-//   const getSkyboxUrl = (fileName: string) => `./glb/${fileName}.webp`;
+// const getSkyboxUrl = (fileName: string) => `./glb/${fileName}.webp`;
 // const [skybox, setSkybox] = useState<string | null>(getSkyboxUrl(skills[0]));
 
 // skybox-image={skybox}

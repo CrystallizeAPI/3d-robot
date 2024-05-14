@@ -16,7 +16,6 @@ export function Variants() {
 // import { useModelViewer } from "../hooks";
 // import { VariantsBar } from "../components";
 
-// export function Variants() {
 //   const modelViewerRef = useModelViewer();
 //   const [variants, setVariants] = useState<string[]>([]);
 
@@ -28,17 +27,4 @@ export function Variants() {
 //     });
 //   }, []);
 
-//   return (
-//     <>
-//       <model-viewer
-//         ref={modelViewerRef}
-//         src="./glb/variants.glb"
-//         camera-orbit="65deg 0 0"
-//         camera-controls
-//         shadow-intensity="3"
-//         shadow-softness="1.5"
-//       />
-//       <VariantsBar variants={variants} onSelect={(variant) => (modelViewerRef.current.variantName = variant)} />
-//     </>
-//   );
-// }
+// <VariantsBar variants={variants} onSelect={(variant) => (modelViewerRef.current.variantName = variant)} />
