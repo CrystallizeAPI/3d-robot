@@ -30,7 +30,7 @@ export function Environment() {
     <>
       <model-viewer
         ref={modelViewerRef}
-        src="../glb/profession.glb"
+        src="./glb/skills.glb"
         camera-controls
         shadow-intensity="3"
         shadow-softness="1.5"
