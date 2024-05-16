@@ -1,9 +1,8 @@
-import { Button } from "../components";
+import { useState } from "react";
 import Slider from "react-slick";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { useState } from "react";
 
 const settings = {
   dots: true,
@@ -14,6 +13,7 @@ const settings = {
 
 const Loader = () => (
   <svg className="loader" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 -960 960 960">
+    <title>Loader</title>
     <path d="M480-80q-82 0-155-31.5t-127.5-86Q143-252 111.5-325T80-480q0-83 31.5-155.5t86-127Q252-817 325-848.5T480-880q17 0 28.5 11.5T520-840q0 17-11.5 28.5T480-800q-133 0-226.5 93.5T160-480q0 133 93.5 226.5T480-160q133 0 226.5-93.5T800-480q0-17 11.5-28.5T840-520q17 0 28.5 11.5T880-480q0 82-31.5 155t-86 127.5q-54.5 54.5-127 86T480-80Z" />
   </svg>
 );
@@ -55,19 +55,13 @@ export function Index() {
               </div>
               <div>
                 <div className="slide">
-                  <img src="./illusion.png" />
+                  <img src="./illusion.png" alt="Illusion" />
                 </div>
               </div>
               <div>
                 <div className="slide">
-                  <img src="./wall.avif" className="image-cover" />
-                  <div className={`yellow circle on-image ${withFrame ? "frame" : ""}`} />
-                </div>
-              </div>
-              <div>
-                <div className="slide">
-                  <img src="./wall.avif" className="image-cover" />
-                  <div className={`circle on-image green ${withFrame ? "frame" : ""}`} />
+                  <img src="./wall.avif" className="image-cover" alt="Wall with yellow circle" />
+                  <div className={`green circle on-image ${withFrame ? "frame" : ""}`} />
                 </div>
               </div>
             </Slider>
@@ -79,8 +73,8 @@ export function Index() {
             <div className="desc" />
             <div className="desc last" />
             <section className="button-wrapper">
-              <Button onClick={() => setWithFrame(true)}>With frame</Button>
-              <Button
+              <button onClick={() => setWithFrame(true)}>With frame</button>
+              <button
                 disabled={isLoading}
                 onClick={() => {
                   setIsLoading(true);
@@ -91,7 +85,7 @@ export function Index() {
                   {isLoading && <Loader />}
                   <span>Change color</span>
                 </div>
-              </Button>
+              </button>
             </section>
           </div>
         </div>
