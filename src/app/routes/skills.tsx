@@ -36,7 +36,7 @@ export function Skills() {
         shadow-softness="1.5"
         loading="eager"
         reveal="manual"
-        poster="./glb/poster.webp"
+        poster="./poster.webp"
       />
 
       <ul className="action-bar">
