@@ -14,6 +14,6 @@ Clone the repo and install packages. Once that is done, you can start the dev se
 bun dev
 ```
 
-## Usages
+## Usage
 
 The 3D models are located under the public folder. Each page in the app is using a model with the corresponding 3d model name. You can navigate between pages by clicking on the arrows at the bottom right corner, which are shown when hovering them.
