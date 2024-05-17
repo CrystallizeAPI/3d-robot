@@ -60,37 +60,6 @@ button:hover {
     outline-color: #d8d5e2;
 }
 
-label {
-    cursor: pointer;
-}
-
-label > button {
-    pointer-events: none;
-}
-
-input[type="radio"]:checked ~ button {
-    outline-style: solid;
-    outline-width: 1px;
-    outline-color: #d8d5e2;
-}
-
-input {
-    border-style: none;
-    background-color: transparent;
-    padding: 0.6em 1.2em;
-    border: 1px solid #d8d5e2;
-    min-width: 120px;
-    outline: none;
-    border-radius: 4px;
-    color: #4c4f5a;
-    font-family: "Roboto", sans-serif;
-}
-
-form {
-    display: flex;
-    gap: 8px;
-}
-
 @media (prefers-color-scheme: light) {
     :root {
         color: #213547;

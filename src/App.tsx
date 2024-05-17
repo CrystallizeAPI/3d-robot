@@ -1,20 +1,18 @@
 import { createBrowserRouter, RouterProvider, Outlet, useLocation, useNavigate } from "react-router-dom";
 
-import { Robot } from "./app/routes/robot";
-import { Variants } from "./app/routes/variants";
-import { Skills } from "./app/routes/skills";
-import { Ar } from "./app/routes/ar";
+import { Robot } from "./app/robot";
+import { Variants } from "./app/variants";
+import { Skills } from "./app/skills";
+import { Ar } from "./app/ar";
 
-import { Index } from "./app/routes";
-import { GoldChef } from "./app/routes/ar/gold-chef";
-import { CopperRobot } from "./app/routes/ar/copper-robot";
-import { CyanViking } from "./app/routes/ar/cyan-viking";
+import { GoldChef } from "./app/ar/gold-chef";
+import { CopperRobot } from "./app/ar/copper-robot";
+import { CyanViking } from "./app/ar/cyan-viking";
 
 import "./App.css";
 
 export const paths = [
-  { index: true, element: <Index />, path: "/" },
-  { path: "robot", element: <Robot /> },
+  { path: "/", element: <Robot />, index: true },
   { path: "variants", element: <Variants /> },
   { path: "skills", element: <Skills /> },
   { path: "ar", element: <Ar /> },
