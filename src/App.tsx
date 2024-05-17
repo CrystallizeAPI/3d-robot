@@ -9,8 +9,6 @@ import { GoldChef } from "./app/ar/gold-chef";
 import { CopperRobot } from "./app/ar/copper-robot";
 import { CyanViking } from "./app/ar/cyan-viking";
 
-import "./App.css";
-
 export const paths = [
   { path: "/", element: <Robot />, index: true },
   { path: "variants", element: <Variants /> },
