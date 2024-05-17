@@ -2,7 +2,9 @@
 
 This is a 3D model of a robot that is rendered by the `model-viewer`. The model comes with different variants and attributes, which are manipulated using code.
 
-<img src="https://github.com/CrystallizeAPI/3d-robot/assets/10707142/51fcb7d1-e6b6-440d-8fc9-ac7731395812" width="282">
+<p align="center">
+  <img src="https://github.com/CrystallizeAPI/3d-robot/assets/10707142/51fcb7d1-e6b6-440d-8fc9-ac7731395812" width="150">
+</p>
 
 ## Installation
 
