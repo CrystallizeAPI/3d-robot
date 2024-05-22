@@ -1,8 +1,19 @@
 {
-    "name": "robot-presentation",
-    "private": true,
-    "version": "0.0.0",
+    "name": "3d-robot",
+    "version": "0.1.0",
     "type": "module",
+    "homepage": "https://github.com/CrystallizeAPI/3d-robot",
+    "description": "Robot 3D model rendered by model-viewer and manipulated using code",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/CrystallizeAPI/3d-robot.git"
+    },
+    "keywords": [
+        "3d model",
+        "model viewer",
+        "ar",
+        "augmented reality"
+    ],
     "engines": {
         "bun": ">=1.1.4"
     },
@@ -23,7 +34,6 @@
         "@biomejs/biome": "1.7.1",
         "@types/react": "^18.3.1",
         "@types/react-dom": "^18.3.0",
-        "@types/react-slick": "^0.23.13",
         "@vitejs/plugin-react-swc": "^3.5.0",
         "typescript": "^5.4.5",
         "vite": "^5.2.0"
