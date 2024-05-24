@@ -50,6 +50,7 @@ button {
     font-weight: 700;
     color: #4c4f5a;
     outline: 1px solid transparent;
+    text-transform: capitalize;
 
     &:enabled {
         cursor: pointer;

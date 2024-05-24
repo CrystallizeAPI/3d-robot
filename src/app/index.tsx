@@ -3,14 +3,28 @@ export function Index() {
 }
 
 //
-// import { useEffect, useState, useRef } from "react";
+// import { useEffect, useState, useRef, useCallback } from "react";
 // import type { ModelViewerElement } from "@google/model-viewer";
 
-// const skills = ["Universal", "Chef", "Viking"];
+// const skillMaterialsNameMap = {
+//   universal: [],
+//   chef: ["Chef hat", "Chef apron"],
+//   viking: ["Viking hat", "Viking fur"],
+// } as const;
+// const skills = Object.keys(skillMaterialsNameMap) as (keyof typeof skillMaterialsNameMap)[];
+// const materialsName = skills.flatMap((skill) => [...skillMaterialsNameMap[skill]]);
 
-// export function Skills() {
+// export function Index() {
 //   const modelViewerRef = useRef<ModelViewerElement>(null);
 //   const [variants, setVariants] = useState<string[]>([]);
+
+//   const hideMaterials = useCallback((modelViewer: ModelViewerElement) => {
+//     materialsName.forEach((name) => {
+//       const material = modelViewer.model?.getMaterialByName(name);
+//       material?.setAlphaMode("MASK");
+//       material?.pbrMetallicRoughness.setBaseColorFactor([1, 1, 1, 0]);
+//     });
+//   }, []);
 
 //   useEffect(() => {
 //     const modelViewer = modelViewerRef.current;
@@ -18,17 +32,11 @@ export function Index() {
 //     modelViewer?.addEventListener("load", () => {
 //       setVariants(modelViewer.availableVariants);
 
-//       modelViewer.model?.materials.forEach(({ name }) => {
-//         if (skills.some((skill) => name.startsWith(skill))) {
-//           const material = modelViewer.model?.getMaterialByName(name);
-//           material?.setAlphaMode("MASK");
-//           material?.pbrMetallicRoughness.setBaseColorFactor([1, 1, 1, 0]);
-//         }
-//       });
+//       hideMaterials(modelViewer);
 
 //       setTimeout(() => modelViewer.dismissPoster(), 0);
 //     });
-//   }, []);
+//   }, [hideMaterials]);
 
 //   return (
 //     <>
@@ -65,14 +73,12 @@ export function Index() {
 //           <li key={skill}>
 //             <button
 //               onClick={() => {
-//                 modelViewerRef.current?.model?.materials.forEach(({ name }) => {
-//                   const material = modelViewerRef.current?.model?.getMaterialByName(name);
+//                 const modelViewer = modelViewerRef.current;
+//                 !!modelViewer && hideMaterials(modelViewer);
 
-//                   if (name.startsWith(skill)) {
-//                     material?.pbrMetallicRoughness.setBaseColorFactor([1, 1, 1, 1]);
-//                   } else if (skills.some((skill) => name.startsWith(skill))) {
-//                     material?.pbrMetallicRoughness.setBaseColorFactor([1, 1, 1, 0]);
-//                   }
+//                 skillMaterialsNameMap[skill].forEach((name) => {
+//                   const material = modelViewer?.model?.getMaterialByName(name);
+//                   material?.pbrMetallicRoughness.setBaseColorFactor([1, 1, 1, 1]);
 //                 });
 //               }}
 //             >
