@@ -19,8 +19,8 @@ export function Index() {
 //   const [variants, setVariants] = useState<string[]>([]);
 
 //   const hideMaterials = useCallback((modelViewer: ModelViewerElement) => {
-//     materialsName.forEach((name) => {
-//       const material = modelViewer.model?.getMaterialByName(name);
+//     materialsName.forEach((materialName) => {
+//       const material = modelViewer.model?.getMaterialByName(materialName);
 //       material?.setAlphaMode("MASK");
 //       material?.pbrMetallicRoughness.setBaseColorFactor([1, 1, 1, 0]);
 //     });
@@ -76,8 +76,8 @@ export function Index() {
 //                 const modelViewer = modelViewerRef.current;
 //                 !!modelViewer && hideMaterials(modelViewer);
 
-//                 skillMaterialsNameMap[skill].forEach((name) => {
-//                   const material = modelViewer?.model?.getMaterialByName(name);
+//                 skillMaterialsNameMap[skill].forEach((materialName) => {
+//                   const material = modelViewer?.model?.getMaterialByName(materialName);
 //                   material?.pbrMetallicRoughness.setBaseColorFactor([1, 1, 1, 1]);
 //                 });
 //               }}
