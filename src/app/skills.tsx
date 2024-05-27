@@ -13,9 +13,10 @@ export function Skills() {
   const modelViewerRef = useRef<ModelViewerElement>(null);
   const [variants, setVariants] = useState<string[]>([]);
 
-  const hideMaterials = useCallback((modelViewer: ModelViewerElement) => {
+  const hideMaterials = useCallback(() => {
     materialsName.forEach((materialName) => {
-      const material = modelViewer.model?.getMaterialByName(materialName);
+      const modelViewer = modelViewerRef.current;
+      const material = modelViewer?.model?.getMaterialByName(materialName);
       material?.setAlphaMode("MASK");
       material?.pbrMetallicRoughness.setBaseColorFactor([1, 1, 1, 0]);
     });
@@ -27,7 +28,7 @@ export function Skills() {
     modelViewer?.addEventListener("load", () => {
       setVariants(modelViewer.availableVariants);
 
-      hideMaterials(modelViewer);
+      hideMaterials();
 
       setTimeout(() => modelViewer.dismissPoster(), 0);
     });
@@ -69,7 +70,7 @@ export function Skills() {
             <button
               onClick={() => {
                 const modelViewer = modelViewerRef.current;
-                !!modelViewer && hideMaterials(modelViewer);
+                hideMaterials();
 
                 skillMaterialsNameMap[skill].forEach((materialName) => {
                   const material = modelViewer?.model?.getMaterialByName(materialName);
