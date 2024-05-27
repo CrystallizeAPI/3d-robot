@@ -16,7 +16,7 @@ import { CyanViking } from "./app/ar/cyan-viking";
 
 export const paths = [
   { path: "/", element: <Robot />, index: true },
-  { path: "/skills", element: <Skills /> },
+  { path: "skills", element: <Skills /> },
   { path: "ar", element: <Ar /> },
   { path: "gold-chef", element: <GoldChef /> },
   { path: "copper-robot", element: <CopperRobot /> },
