@@ -1,6 +1,13 @@
-import { createBrowserRouter, RouterProvider, Outlet, useLocation, useNavigate } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Outlet,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 
-import { Index } from "./app/index";
+import { Robot } from "./app/robot";
+import { Skills } from "./app/skills";
 import { Ar } from "./app/ar/ar";
 
 import { GoldChef } from "./app/ar/gold-chef";
@@ -8,7 +15,8 @@ import { CopperRobot } from "./app/ar/copper-robot";
 import { CyanViking } from "./app/ar/cyan-viking";
 
 export const paths = [
-  { path: "/", element: <Index />, index: true },
+  { path: "/", element: <Robot />, index: true },
+  { path: "/skills", element: <Skills /> },
   { path: "ar", element: <Ar /> },
   { path: "gold-chef", element: <GoldChef /> },
   { path: "copper-robot", element: <CopperRobot /> },
@@ -27,7 +35,8 @@ function Layout() {
   const { pathname } = useLocation();
   const navigate = useNavigate();
   const navigateTo = (type: "next" | "prev") => {
-    const index = pathname === "/" ? 0 : paths.findIndex((path) => `/${path.path}` === pathname);
+    const index =
+      pathname === "/" ? 0 : paths.findIndex((path) => `/${path.path}` === pathname);
     let nextPathIndex: number;
 
     if (type === "next") {

@@ -1,4 +1,4 @@
-export function Index() {
+export function Robot() {
   return <></>;
 }
 
