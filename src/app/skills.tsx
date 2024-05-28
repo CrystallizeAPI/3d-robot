@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, useCallback } from "react";
+import { useEffect, useState, useRef } from "react";
 import type { ModelViewerElement } from "@google/model-viewer";
 
 const skillMaterialsNameMap = {
@@ -9,18 +9,17 @@ const skillMaterialsNameMap = {
 const skills = Object.keys(skillMaterialsNameMap) as (keyof typeof skillMaterialsNameMap)[];
 const materialsName = skills.flatMap((skill) => [...skillMaterialsNameMap[skill]]);
 
+const hideMaterials = (modelViewer: ModelViewerElement | null) => {
+  materialsName.forEach((materialName) => {
+    const material = modelViewer?.model?.getMaterialByName(materialName);
+    material?.setAlphaMode("MASK");
+    material?.pbrMetallicRoughness.setBaseColorFactor([1, 1, 1, 0]);
+  });
+};
+
 export function Skills() {
   const modelViewerRef = useRef<ModelViewerElement>(null);
   const [variants, setVariants] = useState<string[]>([]);
-
-  const hideMaterials = useCallback(() => {
-    materialsName.forEach((materialName) => {
-      const modelViewer = modelViewerRef.current;
-      const material = modelViewer?.model?.getMaterialByName(materialName);
-      material?.setAlphaMode("MASK");
-      material?.pbrMetallicRoughness.setBaseColorFactor([1, 1, 1, 0]);
-    });
-  }, []);
 
   useEffect(() => {
     const modelViewer = modelViewerRef.current;
@@ -28,11 +27,11 @@ export function Skills() {
     modelViewer?.addEventListener("load", () => {
       setVariants(modelViewer.availableVariants);
 
-      hideMaterials();
+      hideMaterials(modelViewer);
 
       setTimeout(() => modelViewer.dismissPoster(), 0);
     });
-  }, [hideMaterials]);
+  }, []);
 
   return (
     <>
@@ -70,7 +69,7 @@ export function Skills() {
             <button
               onClick={() => {
                 const modelViewer = modelViewerRef.current;
-                hideMaterials();
+                hideMaterials(modelViewer);
 
                 skillMaterialsNameMap[skill].forEach((materialName) => {
                   const material = modelViewer?.model?.getMaterialByName(materialName);
