@@ -139,6 +139,10 @@ model-viewer {
     display: flex;
     width: 100%;
 
+    h2 {
+        margin: 0 0 10px;
+    }
+
     model-viewer {
         max-height: 70vh;
     }
